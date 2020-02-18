@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BookMyMeal</string>
+    <string name="rcvrpsrd"> A link will be sent to your mail to reset your password </string>
 </resources>
