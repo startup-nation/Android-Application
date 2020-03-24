@@ -3,9 +3,12 @@ package com.example.bookmymeal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.auth0.android.jwt.Claim;
 import com.auth0.android.jwt.JWT;
+import com.example.bookmymeal.Backend.Decode;
 import com.example.bookmymeal.Backend.MyUrl;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -33,6 +37,7 @@ public class LogInActivity extends AppCompatActivity {
     TextInputEditText editTextEmail,editTextPassword;
     MaterialButton btnlogin;
     ProgressDialog progressDialog;
+    String role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,23 +118,35 @@ public class LogInActivity extends AppCompatActivity {
                 try{
                     JSONObject jsonObject = new JSONObject(response.toString());
                     String token = jsonObject.getString("token");
+                    SharedPreferences sharedPreferences = getSharedPreferences("DataFile", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor=sharedPreferences.edit();
+                    editor.putString("Token",token);
+                    editor.commit();
 
-                    JWT jwt=new JWT(token);
+                    JSONObject tokenDecodeObj=new JSONObject(Decode.decoded(token));
+                    role=tokenDecodeObj.getString("role");
+                    editor.putString("Role",role);
+                    editor.commit();
+                    //String decode= Decode.decoded(token);
+                    System.out.println(role);
+                    if(role.equals("Customer")){
+                        Intent intent = new Intent(LogInActivity.this,CustomerDashboardActivity.class);
+                        intent.putExtra("token",token);
+                        startActivity(intent);
+                        progressDialog.dismiss();
+                    }
+                    else if(role.equals("Admin")){
+                        startActivity(new Intent(LogInActivity.this,AdminDashboardActivity.class));
+                    }
+
+/*
 
 
-                    new MaterialAlertDialogBuilder(LogInActivity.this)
-                            .setTitle("Token")
-                            .setMessage(token)
-                            .setIcon(R.drawable.ic_warning)
-                            .setNegativeButton("ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    progressDialog.dismiss();
-                                }
-                            })
-                            .show();
+*/
 
                 }catch (JSONException e){
+                    e.printStackTrace();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -153,8 +170,9 @@ public class LogInActivity extends AppCompatActivity {
 
         RequestQueue requestQueue =  Volley.newRequestQueue(LogInActivity.this);
         requestQueue.add(jsonObjectRequest);
-
         //method close
     }
+
+
 
 }

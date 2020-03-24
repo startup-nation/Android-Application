@@ -9,4 +9,7 @@ public class MyUrl {
     public static final String UserRegistrationUrl=UserTypeUrl+"/Registration";
 
     public static final String UserLogin=UserUrl+"/Login";
+    public static final String UserProfile=ApiUrl+"/Profile";
+
+    public static final String RestaurantRequestList=ApiUrl+"/Admin/Admin/GetAllRestaurentRequest";
 }
