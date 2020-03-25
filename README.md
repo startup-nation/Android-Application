@@ -22,9 +22,9 @@
 ![](bmt/AddOffer.JPG)
 
 #RestaurantProfile
-![](bmt/Restaurant Profile.JPG)
+![](bmt/RestaurantOffers.JPG)
 #RestaurantRequestList
-![](bmt/Restaurant Request List.JPG)
+![](bmt/RestaurantOffers.JPG)
 
 #User Profile
-![](bmt/Customer Info.JPG)
+![](bmt/RestaurantOffers.JPG)
