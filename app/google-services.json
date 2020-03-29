@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1098346457309",
+    "firebase_url": "https://bookmymealimageresource.firebaseio.com",
+    "project_id": "bookmymealimageresource",
+    "storage_bucket": "bookmymealimageresource.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098346457309:android:1170696250f9d7ac541334",
+        "android_client_info": {
+          "package_name": "com.example.bookmymeal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098346457309-ctj2ufu2m50m6g0fhbpd2rgsntqel14g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyhtsvsMWBSopSUQL4uSOoMtvAcInvP-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098346457309-ctj2ufu2m50m6g0fhbpd2rgsntqel14g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

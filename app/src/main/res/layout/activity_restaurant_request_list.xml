@@ -4,12 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".RestaurantRequestListActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Request List"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="monospace"
+        android:layout_gravity="center_horizontal"
+
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/restaurantRequestList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         tools:listitem="@layout/restaurant_request_list_item"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

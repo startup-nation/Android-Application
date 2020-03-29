@@ -6,11 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,9 +19,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bookmymeal.Backend.DataHold;
 import com.example.bookmymeal.Backend.MyUrl;
-import com.example.bookmymeal.Backend.RestaurantRequestAdapter;
+import com.example.bookmymeal.Backend.RecyclerViewRestaurantRequestAdapter;
 import com.example.bookmymeal.Backend.RestaurantRequestInfo;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RestaurantRequestListActivity extends AppCompatActivity {
-
+    //ListView listView;
     RecyclerView recyclerView;
     ProgressDialog progressDialog;
     ArrayList<RestaurantRequestInfo>restaurantRequestInfos;
@@ -43,10 +40,11 @@ public class RestaurantRequestListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_request_list);
 
-        recyclerView=(RecyclerView)findViewById(R.id.restaurantRequestList);
-
-        showDialog();
-       new getRequestList().execute();
+        recyclerView=(RecyclerView) findViewById(R.id.restaurantRequestList);
+       //listView=(ListView)findViewById(R.id.restaurantRequestList);
+       //new getRequestList().execute();
+        //getRequestList();
+        getVolley();
     }
 
     private void showDialog(){
@@ -56,15 +54,18 @@ public class RestaurantRequestListActivity extends AppCompatActivity {
         progressDialog.show();
     }
 
-    class getRequestList extends AsyncTask<Void,Void,String>{
+   // class getRequestList extends AsyncTask<Void,Void,String>{
 
-        @Override
-        protected String doInBackground(Void... voids) {
-            getVolley();
-            return null;
-        }
+
+       // @Override
+       // protected String doInBackground(Void... voids) {
+        //    getVolley();
+       //     return null;
+       // }
+    //private void getRequestList(){
 
         private void getVolley(){
+        showDialog();
             StringRequest stringRequest=new StringRequest(Request.Method.GET, MyUrl.RestaurantRequestList, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -98,44 +99,42 @@ public class RestaurantRequestListActivity extends AppCompatActivity {
 
         private void parseData(String response){
             try{
+
                 JSONArray reqArray=new JSONArray(response);
                 restaurantRequestInfos=new ArrayList<RestaurantRequestInfo>();
                 System.out.println(response);
-                for(int i=0;i<reqArray.length();i++){
-                    RestaurantRequestInfo restaurantRequestInfo=new RestaurantRequestInfo();
-                    JSONObject reqObj=reqArray.getJSONObject(i);
-                    restaurantRequestInfo.setIsVerified(reqObj.getString("isVerified"));
-                    String verified=reqObj.getString("isVerified");
+                for(int i=0;i<reqArray.length();i++) {
+                    JSONObject reqObj = reqArray.getJSONObject(i);
+                    RestaurantRequestInfo resReqInfo = new RestaurantRequestInfo();
 
-                    JSONObject restaurant=reqObj.getJSONObject("restaurent");
-                    restaurantRequestInfo.setRestaurantName("name");
-                    restaurantRequestInfo.setRestaurantImage("imageUrl");
-
-                    String resName=restaurant.getString("name");
-                    String imgurl=restaurant.getString("imageUrl");
-                    System.out.println(verified+resName+imgurl);
-                    restaurantRequestInfos.add(restaurantRequestInfo);
-
+                    resReqInfo.setRegistrationDateTime(reqObj.getString("registrationDateTime"));
+                    resReqInfo.setComment(reqObj.getString("comment"));
+                    resReqInfo.setIsVerified(reqObj.getString("isVerified"));
+                    resReqInfo.setRestaurant(reqObj.getString("restaurentID"));
+                    restaurantRequestInfos.add(resReqInfo);
+                }
 
                     if(!(DataHold.restaurantRequestInfo==null)){
                         DataHold.restaurantRequestInfo.clear();
                     }
                     DataHold.restaurantRequestInfo=restaurantRequestInfos;
+                    System.out.println(DataHold.restaurantRequestInfo.size());
 
                     if(!(DataHold.restaurantRequestInfo==null) && (DataHold.restaurantRequestInfo.size()>0)){
-                        RestaurantRequestAdapter recyclerViewAdapter= new RestaurantRequestAdapter(RestaurantRequestListActivity.this, restaurantRequestInfos);
-                        recyclerView.setAdapter(recyclerViewAdapter);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(RestaurantRequestListActivity.this));
+                        RecyclerViewRestaurantRequestAdapter recyclerViewRestaurantRequestAdapter= new RecyclerViewRestaurantRequestAdapter(this,restaurantRequestInfos);
+                        recyclerView.setAdapter(recyclerViewRestaurantRequestAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                        progressDialog.dismiss();
                     }else{
-                        recyclerView.setAdapter(null);
+
+                        progressDialog.dismiss();
                     }
-                    progressDialog.dismiss();
-                }
+
 
 
             }catch (JSONException e){
                 e.printStackTrace();
             }
         }
-    }
+    //}
 }

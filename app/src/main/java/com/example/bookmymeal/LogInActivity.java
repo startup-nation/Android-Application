@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -33,7 +34,7 @@ import java.util.Map;
 
 public class LogInActivity extends AppCompatActivity {
 
-    TextView textViewSignUp,textViewFogotPassword;
+    TextView textViewSignUp,textViewFogotPassword,textViewrestaurantRegistration,faq;
     TextInputEditText editTextEmail,editTextPassword;
     MaterialButton btnlogin;
     ProgressDialog progressDialog;
@@ -47,7 +48,17 @@ public class LogInActivity extends AppCompatActivity {
         editTextPassword=(TextInputEditText)findViewById(R.id.textInputEditTextloginPassword);
         textViewSignUp=(TextView)findViewById(R.id.textViewSignup);
         textViewFogotPassword=(TextView)findViewById(R.id.textViewforgotPassword);
+        textViewrestaurantRegistration=(TextView)findViewById(R.id.textViewSignUpRestaurant);
         btnlogin=(MaterialButton)findViewById(R.id.buttonLogin);
+        faq=(TextView)findViewById(R.id.FAQ);
+
+        faq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LogInActivity.this,FaqListActivity.class));
+            }
+        });
+
         textViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +70,13 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LogInActivity.this,ForgotPasswordActivity.class));
+            }
+        });
+
+        textViewrestaurantRegistration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LogInActivity.this,RestaurantRegistrationActivity.class));
             }
         });
 
@@ -169,6 +187,7 @@ public class LogInActivity extends AppCompatActivity {
         });
 
         RequestQueue requestQueue =  Volley.newRequestQueue(LogInActivity.this);
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(jsonObjectRequest);
         //method close
     }

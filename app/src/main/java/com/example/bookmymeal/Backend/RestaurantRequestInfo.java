@@ -2,29 +2,40 @@ package com.example.bookmymeal.Backend;
 
 public class RestaurantRequestInfo {
 
-    String RestaurantName;
-    String RestaurantImage;
+    String Restaurant;
     String isVerified;
+    String comment;
+    String registrationDateTime;
 
-    public String getRestaurantName() {
-        return RestaurantName;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public String getRestaurantImage() {
-        return RestaurantImage;
+    public void setRegistrationDateTime(String registrationDateTime) {
+        this.registrationDateTime = registrationDateTime;
     }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public String getRegistrationDateTime() {
+        return registrationDateTime;
+    }
+
+    public String getRestaurant() {
+        return Restaurant;
+    }
+
 
     public String getIsVerified() {
         return isVerified;
     }
 
-    public void setRestaurantName(String restaurantName) {
-        RestaurantName = restaurantName;
+    public void setRestaurant(String restaurant) {
+        Restaurant = restaurant;
     }
 
-    public void setRestaurantImage(String restaurantImage) {
-        RestaurantImage = restaurantImage;
-    }
 
     public void setIsVerified(String isVerified) {
         this.isVerified = isVerified;
