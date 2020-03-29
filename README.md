@@ -28,3 +28,5 @@
 
 #User Profile
 ![](bmt/Customer%20Info.JPG)
+#FAQ List
+![](bmt/faqList.JPG)
