@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RestaurantAddFoodsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@drawable/bgshadow">
+
+        <ImageView
+            android:id="@+id/imageViewFood"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:src="@mipmap/ic_launcher"
+            android:visibility="invisible"
+            android:padding="10dp"/>
+
+        <ImageButton
+            android:id="@+id/selectImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cameraicon"
+            android:backgroundTint="@android:color/transparent"
+            />
+
+        <TextView
+            android:id="@+id/srcInternelLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <EditText
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:hint="FoodName"
+                android:layout_height="50dp"
+                android:enabled="false"
+                />
+
+            <ImageButton
+                android:layout_marginTop="15dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/edit"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <EditText
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:hint="Price"
+                android:layout_height="50dp"
+                android:enabled="false"
+                />
+
+            <ImageButton
+                android:layout_marginTop="15dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/edit"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:layout_toEndOf="@+id/selectCategory"
+                android:layout_alignParentStart="true"
+                android:hint="Select Category:"
+                android:textSize="18sp"
+                android:padding="10dp"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/selectCategory"
+                android:layout_width="120dp"
+                android:padding="10dp"
+                android:hint="Location"
+                android:layout_height="50dp"
+                android:maxLines="1"
+                android:layout_alignParentEnd="true"
+                android:ellipsize="end"
+                android:enabled="false"
+                />
+
+
+        </RelativeLayout>
+
+
+
+        <EditText
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:hint="Description"
+            android:inputType="text"
+            android:enabled="false"
+            android:layout_height="50dp"/>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveFood"
+            android:layout_marginTop="20dp"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right"
+            android:text="Done"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:textAllCaps="false"
+            app:icon="@drawable/doneicon"
+            app:iconGravity="end"
+            app:iconSize="30dp"
+
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>

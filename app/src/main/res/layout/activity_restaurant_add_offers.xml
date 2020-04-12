@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RestaurantAddOffersActivity">
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Offer Information"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="monospace"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/codeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Code:"
+                android:layout_toEndOf="@+id/offerCode"
+                android:layout_alignParentStart="true"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/offerCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HNY300"
+                android:layout_alignParentEnd="true"
+                android:textSize="18sp"
+                android:layout_marginEnd="50dp"
+                />
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/valueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Value(%):"
+                android:layout_toEndOf="@+id/percentage"
+                android:layout_alignParentStart="true"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="50dp"
+                android:textSize="18sp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/minPuchaseText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="MinimumPuschase:"
+                android:layout_toEndOf="@+id/minPurchaseValue"
+                android:layout_alignParentStart="true"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/minPurchaseValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="600"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="50dp"
+                android:textSize="18sp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/maxDiscountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="MaxDiscount(%):"
+                android:layout_toEndOf="@+id/maxDiscountValue"
+                android:layout_alignParentStart="true"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/maxDiscountValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="50dp"
+                android:textSize="18sp" />
+
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveFood"
+            android:layout_marginTop="20dp"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right"
+            android:text="Done"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:textAllCaps="false"
+            app:icon="@drawable/doneicon"
+            app:iconGravity="end"
+            app:iconSize="30dp"
+
+            />
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
