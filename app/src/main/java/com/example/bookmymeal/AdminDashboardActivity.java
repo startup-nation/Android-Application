@@ -11,13 +11,14 @@ import android.widget.LinearLayout;
 
 public class AdminDashboardActivity extends AppCompatActivity {
 
-    LinearLayout linearRestaurantList,linearLogOut;
+    LinearLayout linearRestaurantList,linearLogOut,linearChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
 
+        linearChat=(LinearLayout)findViewById(R.id.cardChat);
         linearRestaurantList=(LinearLayout)findViewById(R.id.cardRestaurantList);
         linearLogOut=(LinearLayout)findViewById(R.id.cardLogout);
         final SharedPreferences sharedPreferences = getSharedPreferences("DataFile", Context.MODE_PRIVATE);
@@ -39,5 +40,13 @@ public class AdminDashboardActivity extends AppCompatActivity {
                 startActivity(new Intent(AdminDashboardActivity.this,RestaurantRequestListActivity.class));
             }
         });
+
+        linearChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminDashboardActivity.this,FaqListActivity.class));
+            }
+        });
+
     }
 }

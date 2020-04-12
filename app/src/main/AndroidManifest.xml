@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookMyTable">
-        <activity android:name=".FaqListActivity"></activity>
+        <activity android:name=".AddFaqActivity"></activity>
+        <activity android:name=".FaqListActivity" />
         <activity android:name=".RestaurantRegistrationActivity" />
         <activity android:name=".RestaurantRequestListActivity" />
         <activity android:name=".UserProfileActivity" />
