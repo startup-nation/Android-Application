@@ -1,3 +1,4 @@
+![Android Pull Request & Master CI](https://github.com/startup-nation/Android-Application/workflows/Android%20Pull%20Request%20&%20Master%20CI/badge.svg)
 # Android-Application
 
 
